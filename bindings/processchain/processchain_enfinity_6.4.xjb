@@ -1,0 +1,17 @@
+<jxb:bindings version="3.0"
+    xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <jxb:globalBindings generateIsSetMethod="true" />
+
+    <jxb:bindings schemaLocation="../../schemas/xml/ns/enfinity/6.4/core/processchain.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.intershop.xsd.enfinity.core.processchain" />
+            <jxb:nameXmlTransform>
+                <jxb:typeName prefix="Enfinity" />
+                <jxb:anonymousTypeName prefix="Enfinity" />
+                <jxb:elementName prefix="Enfinity" />
+            </jxb:nameXmlTransform>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+</jxb:bindings>

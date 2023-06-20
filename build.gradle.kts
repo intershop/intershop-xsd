@@ -32,8 +32,9 @@ plugins {
     // artifact signing - necessary on Maven Central
     signing
 
-    // intershop version plugin
+    // intershop plugins
     id("com.intershop.gradle.scmversion") version "6.2.0"
+    id("com.intershop.gradle.jaxb") version "6.0.0"
 }
 
 scm {
@@ -67,17 +68,53 @@ java {
     withJavadocJar()
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs(file("${buildDir}/generated/jaxb/java"))
+        }
+    }
+}
+
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
+    register("downloadExternalXSD", Copy::class) {
+        // Map of external XSD resources to download for packaging them into the JAR,
+        // whereas the key is the URL and the value the filename to use for storing it
+        val externalXSDResourceDownloadMap = mapOf(
+            Pair("https://www.w3.org/XML/1998/namespace.xsd", "www.w3.org/XML/1998/namespace.xsd"),
+            Pair("https://www.w3.org/2007/08/xml.xsd", "www.w3.org/2001/xml.xsd")
+        )
+
+        externalXSDResourceDownloadMap.forEach { pair ->
+            val url = pair.key
+            val filename = pair.value
+
+            copy {
+                from(resources.text.fromUri(url))
+                into("${buildDir}/schemas/xml/ns/external")
+                rename { filename }
+
+                duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+            }
+        }
+    }
+
     withType<Jar> {
-        from("xml") {
-            into("xml")
+        from("schemas/xml/ns") {
+            into("xml/ns")
+            include("**/*.xsd")
+        }
+        from("${buildDir}/schemas/xml/ns/external") {
+            into("xml/ns")
             include("**/*.xsd")
         }
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        dependsOn("downloadExternalXSD", "jaxb")
     }
 
     withType<Sign> {
@@ -87,6 +124,19 @@ tasks {
         }
         withType<PublishToMavenRepository> {
             this.dependsOn(sign)
+        }
+    }
+}
+
+jaxb {
+    javaGen {
+        register("processchain_v1") {
+            schema = file("schemas/xml/ns/semantic/processchain/1.1.0.xsd")
+            binding = file("bindings/processchain/processchain_v1.xjb")
+        }
+        register("processchain_enfinity_6_4") {
+            schema = file("schemas/xml/ns/enfinity/6.4/core/processchain.xsd")
+            binding = file("bindings/processchain/processchain_enfinity_6.4.xjb")
         }
     }
 }
@@ -142,4 +192,8 @@ publishing {
 
 signing {
     sign(publishing.publications["intershopMvn"])
+}
+
+dependencies {
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
 }
