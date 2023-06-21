@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:chain
+    xmlns:p="https://www.intershop.com/xml/ns/semantic/processchain/v1"
+    name="TestChain"
+>
+    <p:concurrent name="TestConcurrent">
+        <p:job job="..." name="TestJob" />
+    </p:concurrent>
+</p:chain>
