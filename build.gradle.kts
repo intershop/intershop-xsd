@@ -26,6 +26,9 @@ plugins {
     // ide plugin
     idea
 
+    // test coverage
+    jacoco
+
     // publish plugin
     `maven-publish`
 
@@ -71,7 +74,7 @@ java {
 sourceSets {
     main {
         java {
-            srcDirs(file("${buildDir}/generated/jaxb/java"))
+            srcDirs.add(file("${buildDir}/generated/jaxb/java"))
         }
     }
 }
@@ -79,6 +82,25 @@ sourceSets {
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    withType<Test>().configureEach {
+        useJUnitPlatform()
+
+        // Make sure JAR with packaged XSDs is available during tests
+        classpath += named("jar").get().outputs.files
+        dependsOn("jar")
+    }
+
+    withType<JacocoReport> {
+        reports {
+            xml.required.set(true)
+            html.required.set(true)
+
+            html.outputLocation.set(file("${buildDir}/jacocoHtml"))
+        }
+
+        dependsOn("test")
     }
 
     register("downloadExternalXSD", Copy::class) {
