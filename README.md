@@ -6,13 +6,13 @@ This project provides XML Schema Definitions (XSDs) of Intershop packaged as JAR
 To clone this project with its Git submodule [schemas](schemas), you want to clone this repository recursively with `--recursive`:
 
 ```shell
-git clone --recursive https://github.com/IntershopCommunicationsAG/intershop-xsd.git
+git clone --recursive https://github.com/intershop/intershop-xsd.git
 ```
 
 # Submodules
-| submodule          | repository                                                 |
-|--------------------|------------------------------------------------------------|
-| [schemas](schemas) | https://github.com/IntershopCommunicationsAG/intershop-xsd |
+| submodule          | repository                                 |
+|--------------------|--------------------------------------------|
+| [schemas](schemas) | https://github.com/intershop/intershop-xsd |
 
 To avoid merge conflicts, make a separate commit for submodule updates, so you can drop that commit afterward.
 

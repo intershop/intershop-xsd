@@ -171,7 +171,7 @@ publishing {
             pom {
                 name.set(project.name)
                 description.set(project.description)
-                url.set("https://github.com/IntershopCommunicationsAG/${project.name}")
+                url.set("https://github.com/intershop/${project.name}")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -191,9 +191,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("git@github.com:IntershopCommunicationsAG/${project.name}.git")
-                    developerConnection.set("git@github.com:IntershopCommunicationsAG/${project.name}.git")
-                    url.set("https://github.com/IntershopCommunicationsAG/${project.name}")
+                    connection.set("git@github.com:intershop/${project.name}.git")
+                    developerConnection.set("git@github.com:intershop/${project.name}.git")
+                    url.set("https://github.com/intershop/${project.name}")
                 }
             }
         }
