@@ -218,4 +218,13 @@ signing {
 
 dependencies {
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
+    implementation("com.google.inject:guice:5.1.0")
+
+    implementation("org.slf4j:log4j-over-slf4j:1.7.36")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
+
+    runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.3")
+
+    testImplementation(platform("org.junit:junit-bom:5.9.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
