@@ -142,11 +142,11 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
             StreamSource schemaResourceStreamSource = new StreamSource(schemaResourceInputStream);
             StreamSource xmlStreamSource = new StreamSource(xmlFile);
 
+            // Clear parse errors from potential previous iteration
+            clearParseErrors();
+
             if (validate(schemaResourceStreamSource, xmlStreamSource))
             {
-                // Clear parse errors from potential previous iteration
-                clearParseErrors();
-
                 return true;
             }
             else
@@ -166,6 +166,9 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
         Validator validator = newValidator(xsdStreamSource);
         Objects.requireNonNull(validator, "Validator initialization failed");
         validator.setErrorHandler(validationErrorHandler);
+
+        // Clear validation errors from potential previous validation
+        validationErrorHandler.clearErrors();
 
         try
         {

@@ -23,6 +23,11 @@ public class XmlSchemaValidationErrorHandler implements ErrorHandler
         return exceptions;
     }
 
+    public void clearErrors()
+    {
+        exceptions.clear();
+    }
+
     @Override
     public void warning(SAXParseException exception)
     {
