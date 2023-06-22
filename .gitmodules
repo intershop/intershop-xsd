@@ -1,3 +1,3 @@
 [submodule "schemas"]
     path = schemas
-    url = git@github.com:intershop/intershop-xsd.git
+    url = https://github.com/intershop/intershop.github.io.git
