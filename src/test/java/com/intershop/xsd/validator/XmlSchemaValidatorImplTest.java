@@ -12,6 +12,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 /**
  * Test class for {@link XmlSchemaValidatorImpl}.
  */
@@ -20,12 +23,15 @@ class XmlSchemaValidatorImplTest
     URL validXML = getClass().getResource("test-valid.xml");
     URL invalidXML = getClass().getResource("test-invalid.xml");
 
+    Injector injector;
+
     XmlSchemaValidatorImpl underTest;
 
     @BeforeEach
     void setUp() throws XmlSchemaFilesMissingException
     {
-        underTest = new XmlSchemaValidatorImpl();
+        injector = Guice.createInjector();
+        underTest = injector.getInstance(XmlSchemaValidatorImpl.class);
         underTest.setSchemaResourcePaths(List.of("test-schema.xsd"));
     }
 

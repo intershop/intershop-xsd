@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -46,12 +47,27 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
      */
     private final List<SAXParseException> parseErrors;
 
+    /**
+     * Schema validation error handler.
+     */
+    private final XmlSchemaValidationErrorHandler xmlSchemaValidationErrorHandler;
+
+    /**
+     * Resolves schemas via classpath resources.
+     */
+    private final XmlSchemaClasspathResourceResolver xmlSchemaClasspathResourceResolver;
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public XmlSchemaValidatorImpl()
+    @Inject
+    public XmlSchemaValidatorImpl(XmlSchemaValidationErrorHandler xmlSchemaValidationErrorHandler,
+        XmlSchemaClasspathResourceResolver xmlSchemaClasspathResourceResolver)
     {
         this.schemaResourcePaths = Collections.synchronizedList(new ArrayList<>());
         this.parseErrors = Collections.synchronizedList(new ArrayList<>());
+
+        this.xmlSchemaValidationErrorHandler = xmlSchemaValidationErrorHandler;
+        this.xmlSchemaClasspathResourceResolver = xmlSchemaClasspathResourceResolver;
     }
 
     /**
@@ -162,26 +178,25 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
 
     private boolean validate(StreamSource xsdStreamSource, StreamSource xmlStreamSource)
     {
-        XmlSchemaValidationErrorHandler validationErrorHandler = new XmlSchemaValidationErrorHandler();
         Validator validator = newValidator(xsdStreamSource);
         Objects.requireNonNull(validator, "Validator initialization failed");
-        validator.setErrorHandler(validationErrorHandler);
+        validator.setErrorHandler(xmlSchemaValidationErrorHandler);
 
         // Clear validation errors from potential previous validation
-        validationErrorHandler.clearErrors();
+        xmlSchemaValidationErrorHandler.clearErrors();
 
         try
         {
             validator.validate(xmlStreamSource);
 
-            if (!validationErrorHandler.getErrors().isEmpty())
+            if (!xmlSchemaValidationErrorHandler.getErrors().isEmpty())
             {
                 throw new SAXException("Error handler detected SAX parse exceptions, therefore invalid schema");
             }
         }
         catch(SAXException e)
         {
-            setParseErrors(validationErrorHandler.getErrors());
+            setParseErrors(xmlSchemaValidationErrorHandler.getErrors());
             return false;
         }
         catch(IOException e)
@@ -201,7 +216,7 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
             restrictExternalReferenceAccess(schemaFactory);
 
             // Resource resolver
-            schemaFactory.setResourceResolver(new XmlSchemaClasspathResourceResolver());
+            schemaFactory.setResourceResolver(xmlSchemaClasspathResourceResolver);
 
             // Parse specified source as a schema and return it
             Schema schema = schemaFactory.newSchema(xsdInputStream);

@@ -28,14 +28,7 @@ class ProcessChainXmlSchemaValidatorTest
     @BeforeEach
     void setUp()
     {
-        injector = Guice.createInjector(new AbstractModule()
-        {
-            @Override
-            protected void configure()
-            {
-                bind(XmlSchemaValidator.class).toInstance(new XmlSchemaValidatorImpl());
-            }
-        });
+        injector = Guice.createInjector(new TestModule());
     }
 
     @Test
@@ -62,5 +55,14 @@ class ProcessChainXmlSchemaValidatorTest
         File processChainXMLFile = new File(enfinityProcessChainXML.getFile());
         assertTrue(underTest.isValid(processChainXMLFile));
         assertTrue(underTest.getParseErrors().isEmpty());
+    }
+
+    private static class TestModule extends AbstractModule
+    {
+        @Override
+        protected void configure()
+        {
+            bind(XmlSchemaValidator.class).to(XmlSchemaValidatorImpl.class);
+        }
     }
 }
