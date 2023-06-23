@@ -17,6 +17,10 @@ git clone --recursive https://github.com/intershop/intershop-xsd.git
 To avoid merge conflicts, make a separate commit for submodule updates, so you can drop that commit afterward.
 
 
+# Examples
+To find examples of schemas in use, you might want to take a look into the [examples](examples) directory.
+
+
 # Third party XSD
 Third party XSDs are retrieved during build and for publishing to store all reference XSDs in one artifact.
 
