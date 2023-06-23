@@ -59,6 +59,12 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * @param xmlSchemaValidationErrorHandler XML schema validator error handler
+     * @param xmlSchemaClasspathResourceResolver XML schema classpath resource resolver
+     *
+     * @see XmlSchemaValidatorImpl
+     */
     @Inject
     public XmlSchemaValidatorImpl(XmlSchemaValidationErrorHandler xmlSchemaValidationErrorHandler,
         XmlSchemaClasspathResourceResolver xmlSchemaClasspathResourceResolver)

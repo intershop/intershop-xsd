@@ -5,6 +5,11 @@ package com.intershop.xsd.validator;
  */
 public class XmlSchemaFilesMissingException extends Exception
 {
+    /**
+     * @param msg Exception message
+     *
+     * @see XmlSchemaFilesMissingException
+     */
     public XmlSchemaFilesMissingException(String msg)
     {
         super(msg);

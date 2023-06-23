@@ -10,6 +10,9 @@ import org.xml.sax.SAXParseException;
 import com.intershop.xsd.validator.XmlSchemaFilesMissingException;
 import com.intershop.xsd.validator.XmlSchemaValidator;
 
+/**
+ * Specific {@link XmlSchemaValidator} for process chains.
+ */
 public class ProcessChainXmlSchemaValidator implements XmlSchemaValidator
 {
     /**
@@ -23,6 +26,12 @@ public class ProcessChainXmlSchemaValidator implements XmlSchemaValidator
 
     private final XmlSchemaValidator xmlSchemaValidator;
 
+    /**
+     * @param xmlSchemaValidator XML schema validator
+     * @throws XmlSchemaFilesMissingException If none of the XML schema files are existing
+     *
+     * @see ProcessChainXmlSchemaValidator
+     */
     @Inject
     public ProcessChainXmlSchemaValidator(XmlSchemaValidator xmlSchemaValidator) throws XmlSchemaFilesMissingException
     {

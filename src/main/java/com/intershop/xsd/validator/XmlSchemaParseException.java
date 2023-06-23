@@ -12,8 +12,14 @@ import org.xml.sax.XMLReader;
  */
 public class XmlSchemaParseException extends RuntimeException
 {
-    public XmlSchemaParseException(String msg, Exception exception)
+    /**
+     * @param msg Exception message
+     * @param cause Exception cause
+     *
+     * @see XmlSchemaParseException
+     */
+    public XmlSchemaParseException(String msg, Exception cause)
     {
-        super(msg, exception);
+        super(msg, cause);
     }
 }

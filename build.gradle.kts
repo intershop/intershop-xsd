@@ -92,6 +92,11 @@ tasks {
         dependsOn("jar")
     }
 
+    withType<Javadoc> {
+        // Javadoc include is matched against the package of the classes
+        include("com/intershop/xsd/validator/**")
+    }
+
     withType<JacocoReport> {
         reports {
             xml.required.set(true)

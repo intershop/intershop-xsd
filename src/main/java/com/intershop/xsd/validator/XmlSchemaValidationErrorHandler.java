@@ -13,16 +13,25 @@ public class XmlSchemaValidationErrorHandler implements ErrorHandler
 {
     private final List<SAXParseException> exceptions;
 
+    /**
+     * @see XmlSchemaValidationErrorHandler
+     */
     public XmlSchemaValidationErrorHandler()
     {
         this.exceptions = new ArrayList<>();
     }
 
+    /**
+     * @return List of {@link SAXParseException}s during validation
+     */
     public List<SAXParseException> getErrors()
     {
         return exceptions;
     }
 
+    /**
+     * Clear list of validation errors
+     */
     public void clearErrors()
     {
         exceptions.clear();
