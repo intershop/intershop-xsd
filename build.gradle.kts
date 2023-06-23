@@ -74,7 +74,15 @@ java {
 sourceSets {
     main {
         java {
-            srcDirs.add(file("${buildDir}/generated/jaxb/java"))
+            srcDirs.add(
+                file("${buildDir}/generated/jaxb/java")
+            )
+        }
+        resources {
+            srcDirs.addAll(listOf(
+                file("${projectDir}/schemas"),
+                file("${buildDir}/schemas")
+            ))
         }
     }
 }
@@ -108,7 +116,7 @@ tasks {
         dependsOn("test")
     }
 
-    register("downloadExternalXSD", Copy::class) {
+    register<Copy>("downloadExternalXSD") {
         // Map of external XSD resources to download for packaging them into the JAR,
         // whereas the key is the URL and the value the filename to use for storing it
         val externalXSDResourceDownloadMap = mapOf(
@@ -131,6 +139,8 @@ tasks {
     }
 
     withType<Jar> {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
         from("schemas/xml/ns") {
             into("xml/ns")
             include("**/*.xsd")
@@ -139,9 +149,11 @@ tasks {
             into("xml/ns")
             include("**/*.xsd")
         }
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-        dependsOn("downloadExternalXSD", "jaxb")
+        from(java.sourceSets.main.get().output)
+        from(java.docsDir.get().asFile)
+
+        dependsOn("downloadExternalXSD", "jaxb", "javadoc")
     }
 
     withType<Sign> {
@@ -171,7 +183,7 @@ jaxb {
 publishing {
     publications {
         create("intershopMvn", MavenPublication::class.java) {
-            from(components["java"])
+            artifact(tasks["jar"])
 
             pom {
                 name.set(project.name)
