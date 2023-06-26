@@ -30,10 +30,14 @@ Third party XSDs are retrieved during build and for publishing to store all refe
 | xml/ns/www.w3.org/2001     | http://www.w3.org/2001/     |
 
 
-# Release
+# Pull Requests
 After having your XSD changes merged in the [intershop.github.io repository](https://github.com/intershop/intershop.github.io),
-just create a new release in this project with the corresponding new version according to semantic versioning.
-The branch specific, current referenced commit from the Git submodule [schemas](schemas) will be checked out during release creation.
+go to the Git submodule [schemas](schemas) directory and update the submodule to the remote repository commit you want to use for your PR and release of this artifact afterwards.
+
+
+# Release
+Create a new release in this project with the corresponding new version according to semantic versioning.
+The referenced commit from the Git submodule [schemas](schemas) will be checked out during release creation.
 
 
 # License
