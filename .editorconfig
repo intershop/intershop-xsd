@@ -10,7 +10,8 @@ max_line_length = 120
 tab_width = 4
 
 [*.{yml,yaml}]
-tab_width = 2
+tab_width = 1
+indent_size = 2
 
 [*.{xml,xsd,xjb}]
 trim_trailing_whitespace = true
