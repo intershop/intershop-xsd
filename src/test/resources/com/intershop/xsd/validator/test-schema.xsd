@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    targetNamespace="https://www.intershop.com/xml/ns/semantic/test-schema/v1"
+    xmlns="https://www.intershop.com/xml/ns/semantic/test-schema/v1"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+               schemaLocation="http://www.w3.org/2001/xml.xsd" />
+
+    <xs:complexType name="extension">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="2" name="ignore" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:normalizedString" />
+    </xs:complexType>
+
+    <xs:element name="ownElement">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="extension">
+                    <xs:attribute name="value" type="xs:short" default="0" />
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

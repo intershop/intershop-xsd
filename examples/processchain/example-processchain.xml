@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:chain
+    xmlns:p="https://www.intershop.com/xml/ns/semantic/processchain/v1"
+    keepAliveTime="10"
+    name="Chain 1"
+>
+    <!--
+        This example of a process chain can be executed at different application with different result
+            * application "Root Site/system (default)" - the chain will mask all errors (not existing sub chains)
+            * application "PrimeTech-Site/PrimeTechSpecials" - the chain will fail, because the jobs "CheckOrders" and "CheckSessions" don't exist.
+    -->
+    <p:concurrent name="Chain 1.1 - Concurrent">
+        <p:description xml:lang="de-DE">Beispiel Prozess Kette</p:description>
+        <p:description>Process Chain Example</p:description>
+        <p:sequence name="Chain 1.1.1 - Sequence">
+            <p:job job="CheckOrders" name="Chain 1.1.1.1 - Job" />
+            <p:pipeline pipeline="ExecuteProcessChain" name="Chain 1.1.1.2 - Pipeline">
+                <p:ignore>NOTFOUND</p:ignore>
+                <p:parameter name="XmlFileName">system/config/cluster/processchain.notfound.xml</p:parameter>
+            </p:pipeline>
+        </p:sequence>
+        <p:sequence name="Chain 1.1.2 - Sequence">
+            <p:pipeline pipeline="ExecuteProcessChain" name="Chain 1.1.2.1 - Pipeline">
+                <p:ignore>NOTFOUND</p:ignore>
+                <p:parameter name="XmlFileName">system/config/cluster/processchain.xml.example2</p:parameter>
+            </p:pipeline>
+            <p:job job="CheckSessions" name="Chain 1.1.2.2 - Job" />
+        </p:sequence>
+        <p:sequence name="Chain 1.1.3 - Sequence">
+            <p:ignore>NOTFOUND</p:ignore>
+            <p:job allsites="true" concurrent="true" job="CheckOrders" name="Chain 1.1.3.1 - Job" />
+            <p:pipeline pipeline="ExecuteProcessChain" name="Chain 1.1.3.2 - Pipeline">
+                <p:parameter name="XmlFileName">system/config/cluster/processchain.notfound.xml</p:parameter>
+            </p:pipeline>
+            <p:error name="Chain 1.1.3 - Error">
+                <p:job allsites="true" concurrent="true" job="CheckOrders" name="Chain 1.1.3.1 - Error Job" />
+            </p:error>
+        </p:sequence>
+    </p:concurrent>
+</p:chain>

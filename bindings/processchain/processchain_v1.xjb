@@ -1,0 +1,14 @@
+<jxb:bindings version="3.0"
+    xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <jxb:globalBindings generateIsSetMethod="true" />
+
+    <!-- Minor and patch updates for the same schema binding version are allowed - for major updates add a new binding -->
+    <jxb:bindings schemaLocation="../../schemas/xml/ns/semantic/processchain/1.1.0.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <!-- Package contains only major version part (v1) -->
+            <jxb:package name="com.intershop.xsd.processchain.v1" />
+        </jxb:schemaBindings>
+    </jxb:bindings>
+</jxb:bindings>
