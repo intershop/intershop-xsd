@@ -69,6 +69,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 
     withJavadocJar()
+    withSourcesJar()
 }
 
 sourceSets {
@@ -138,7 +139,8 @@ tasks {
         }
     }
 
-    withType<Jar> {
+    // This block will only be executed for tasks named "jar"
+    withType<Jar>().matching { task -> task.name == "jar" }.configureEach {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
         from("schemas/xml/ns") {
@@ -150,10 +152,7 @@ tasks {
             include("**/*.xsd")
         }
 
-        from(java.sourceSets.main.get().output)
-        from(java.docsDir.get().asFile)
-
-        dependsOn("downloadExternalXSD", "jaxb", "javadoc")
+        dependsOn("downloadExternalXSD", "jaxb")
     }
 
     withType<Sign> {
@@ -183,7 +182,7 @@ jaxb {
 publishing {
     publications {
         create("intershopMvn", MavenPublication::class.java) {
-            artifact(tasks["jar"])
+            from(components["java"])
 
             pom {
                 name.set(project.name)
