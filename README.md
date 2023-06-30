@@ -1,4 +1,10 @@
 # Intershop XML Schema Definitions
+
+[![Latest release](https://badgen.net/github/release/intershop/intershop-xsd/stable)](https://github.com/intershop/intershop-xsd/releases)
+[![License](https://badgen.net/github/license/intershop/intershop-xsd)](LICENSE.md)
+[![Automated checks](https://badgen.net/github/checks/intershop/intershop-xsd)](https://github.com/intershop/intershop-xsd/actions)
+[![Dependabot](https://badgen.net/github/dependabot/intershop/intershop-xsd)](.github/dependabot.yml)
+
 This project provides XML Schema Definitions (XSDs) of Intershop packaged as JAR. It will also fetch and provide external referenced XSDs to avoid the necessity to have internet access during various processing steps.
 
 
