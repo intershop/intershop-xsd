@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 /*
  * Copyright 2023 Intershop Communications AG.
  *
@@ -20,8 +18,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     // project plugins
     java
-
-    kotlin("jvm") version "1.8.22"
 
     // ide plugin
     idea
@@ -89,10 +85,6 @@ sourceSets {
 }
 
 tasks {
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     withType<Test>().configureEach {
         useJUnitPlatform()
 
