@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 /*
  * Copyright 2023 Intershop Communications AG.
  *
@@ -20,8 +18,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     // project plugins
     java
-
-    kotlin("jvm") version "1.8.22"
 
     // ide plugin
     idea
@@ -89,10 +85,6 @@ sourceSets {
 }
 
 tasks {
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     withType<Test>().configureEach {
         useJUnitPlatform()
 
@@ -237,7 +229,7 @@ dependencies {
     implementation("com.google.inject:guice:5.1.0")
 
     implementation("org.slf4j:log4j-over-slf4j:1.7.36")
-    implementation("org.slf4j:slf4j-simple:1.7.36")
+    implementation("org.slf4j:slf4j-api:1.7.36")
 
     runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.3")
 
