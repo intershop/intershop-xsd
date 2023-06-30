@@ -9,16 +9,16 @@ This project provides XML Schema Definitions (XSDs) of Intershop packaged as JAR
 
 
 # Setup
-To clone this project with its Git submodule [schemas](schemas), you want to clone this repository recursively with `--recursive`:
+To clone this project with its Git submodule _schemas_, you want to clone this repository recursively with `--recursive`:
 
 ```shell
 git clone --recursive https://github.com/intershop/intershop-xsd.git
 ```
 
 # Submodules
-| submodule          | repository                                 |
-|--------------------|--------------------------------------------|
-| [schemas](schemas) | https://github.com/intershop/intershop-xsd |
+| submodule | repository                                 |
+|-----------|--------------------------------------------|
+| _schemas_ | https://github.com/intershop/intershop-xsd |
 
 To avoid merge conflicts, make a separate commit for submodule updates, so you can drop that commit afterward.
 
@@ -38,12 +38,12 @@ Third party XSDs are retrieved during build and for publishing to store all refe
 
 # Pull Requests
 After having your XSD changes merged in the [intershop.github.io repository](https://github.com/intershop/intershop.github.io),
-go to the Git submodule [schemas](schemas) directory and update the submodule to the remote repository commit you want to use for your PR and release of this artifact afterwards.
+go to the Git submodule _schemas_ directory and update the submodule to the remote repository commit you want to use for your PR and release of this artifact afterwards.
 
 
 # Release
 Create a new release in this project with the corresponding new version according to semantic versioning.
-The referenced commit from the Git submodule [schemas](schemas) will be checked out during release creation.
+The referenced commit from the Git submodule _schemas_ will be checked out during release creation.
 
 
 # License
