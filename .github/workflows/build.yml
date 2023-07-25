@@ -31,38 +31,13 @@ jobs:
       - name: Create .gradle dir
         run: mkdir -p $HOME/.gradle
 
-      - name: Install gpg secret key
-        env:
-          SIGNINGFILE: ${{ secrets.SIGNINGFILE }}
-        run: |
-          cat <(echo -e "${{ secrets.SIGNINGFILE }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
-
-      - name: Export gpg file
-        env:
-          SIGNINGKEYID: ${{ secrets.SIGNINGKEYID }}
-          SIGNINGPASSWORD: ${{ secrets.SIGNINGPASSWORD }}
-        run: |
-          gpg --batch --passphrase="$SIGNINGPASSWORD" --pinentry-mode loopback --export-secret-keys $SIGNINGKEYID > $HOME/.gradle/secrets.gpg
-
-      - name: Create gradle properties
-        env:
-          SIGNINGKEYID: ${{ secrets.SIGNINGKEYID }}
-          SIGNINGPASSWORD: ${{ secrets.SIGNINGPASSWORD }}
-          SONATYPEPASSWORD: ${{ secrets.SONATYPEPASSWORD }}
-          SONATYPEUSER: ${{ secrets.SONATYPEUSER }}
-        run: echo -e "signing.keyId=$SIGNINGKEYID\nsigning.password=$SIGNINGPASSWORD\nsigning.secretKeyRingFile=$HOME/.gradle/secrets.gpg\nsonatypeUsername=$SONATYPEUSER\nsonatypePassword=$SONATYPEPASSWORD" > $HOME/.gradle/gradle.properties
-
       - name: Build and test with Gradle
         env:
           GRADLE_OPTS: "-Dorg.gradle.daemon=true"
-        run: ./gradlew build test :publishIntershopMvnPublicationToMavenRepository -s
+        run: ./gradlew build test -s
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
             files: build/test-results/**/*.xml
-
-      - name: Post Build
-        run: rm -f $HOME/.gradle/gradle.properties
