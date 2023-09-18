@@ -225,7 +225,7 @@ signing {
 }
 
 dependencies {
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.1")
     implementation("com.google.inject:guice:5.1.0")
 
     implementation("org.slf4j:log4j-over-slf4j:1.7.36")
