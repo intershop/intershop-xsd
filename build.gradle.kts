@@ -226,7 +226,7 @@ signing {
 
 dependencies {
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.1")
-    implementation("com.google.inject:guice:5.1.0")
+    implementation("jakarta.inject:jakarta.inject-api:2.0.1")
 
     implementation("org.slf4j:log4j-over-slf4j:1.7.36")
     implementation("org.slf4j:slf4j-api:1.7.36")
@@ -235,6 +235,6 @@ dependencies {
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-
+    testImplementation("com.google.inject:guice:7.0.0")
     testImplementation("org.mockito:mockito-core:5.6.0")
 }
