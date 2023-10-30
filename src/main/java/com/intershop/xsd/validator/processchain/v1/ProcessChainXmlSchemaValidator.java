@@ -3,7 +3,7 @@ package com.intershop.xsd.validator.processchain.v1;
 import java.io.File;
 import java.util.List;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.xml.sax.SAXParseException;
 
