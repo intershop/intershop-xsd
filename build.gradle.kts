@@ -233,7 +233,7 @@ dependencies {
 
     runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.4")
 
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("com.google.inject:guice:7.0.0")
     testImplementation("org.mockito:mockito-core:5.6.0")
