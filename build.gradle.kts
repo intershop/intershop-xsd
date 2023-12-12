@@ -33,7 +33,7 @@ plugins {
 
     // intershop plugins
     id("com.intershop.gradle.scmversion") version "6.2.1"
-    id("com.intershop.gradle.jaxb") version "6.0.0"
+    id("com.intershop.gradle.jaxb") version "6.1.0"
 }
 
 scm {
