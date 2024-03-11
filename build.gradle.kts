@@ -231,7 +231,7 @@ dependencies {
     implementation("org.slf4j:log4j-over-slf4j:1.7.36")
     implementation("org.slf4j:slf4j-api:1.7.36")
 
-    runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.4")
+    runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.5")
 
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
