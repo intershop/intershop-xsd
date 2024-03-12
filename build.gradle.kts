@@ -236,5 +236,5 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("com.google.inject:guice:7.0.0")
-    testImplementation("org.mockito:mockito-core:5.10.0")
+    testImplementation("org.mockito:mockito-core:5.11.0")
 }
