@@ -32,20 +32,14 @@ plugins {
     signing
 
     // intershop plugins
-    id("com.intershop.gradle.scmversion") version "6.2.1"
     id("com.intershop.gradle.jaxb") version "6.1.0"
-}
-
-scm {
-    version {
-        type = "threeDigits"
-        initialVersion = "1.0.0"
-    }
 }
 
 group = "com.intershop.xsd"
 description = "Intershop XSD"
-version = scm.version.version
+// apply gradle property 'projectVersion' to project.version, default to 'LOCAL'
+val projectVersion : String? by project
+version = projectVersion ?: "LOCAL"
 
 // set correct project status
 if (project.version.toString().endsWith("-SNAPSHOT")) {
