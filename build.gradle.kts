@@ -55,38 +55,51 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-
     withJavadocJar()
     withSourcesJar()
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 sourceSets {
     main {
         java {
             srcDirs.add(
-                file("${buildDir}/generated/jaxb/java")
+                project.layout.buildDirectory.file("generated/jaxb/java").get().asFile
             )
         }
         resources {
             srcDirs.addAll(listOf(
-                file("${projectDir}/schemas"),
-                file("${buildDir}/schemas")
+                project.layout.projectDirectory.file("schemas").asFile,
+                project.layout.buildDirectory.file("schemas").get().asFile
             ))
         }
     }
 }
 
-tasks {
-    withType<Test>().configureEach {
-        useJUnitPlatform()
+testing {
+    suites.withType<JvmTestSuite> {
+        useJUnitJupiter()
+        dependencies {
+            implementation("com.google.inject:guice:7.0.0")
+            implementation("org.mockito:mockito-core:5.14.1")
+            // Make sure JAR with packaged XSDs is available during tests
+            implementation(project.files(tasks.named("jar").get().outputs.files))
+        }
 
-        // Make sure JAR with packaged XSDs is available during tests
-        classpath += named("jar").get().outputs.files
-        dependsOn("jar")
+        targets {
+            all {
+                testTask.configure {
+                    dependsOn("jar")
+                }
+            }
+        }
     }
+}
 
+tasks {
     withType<Javadoc> {
         // Javadoc include is matched against the package of the classes
         include("com/intershop/xsd/validator/**")
@@ -97,7 +110,7 @@ tasks {
             xml.required.set(true)
             html.required.set(true)
 
-            html.outputLocation.set(file("${buildDir}/jacocoHtml"))
+            html.outputLocation.set(project.layout.buildDirectory.dir("jacocoHtml"))
         }
 
         dependsOn("test")
@@ -117,7 +130,7 @@ tasks {
 
             copy {
                 from(resources.text.fromUri(url))
-                into("${buildDir}/schemas/xml/ns/external")
+                into(project.layout.buildDirectory.file("schemas/xml/ns/external"))
                 rename { filename }
 
                 duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -133,7 +146,7 @@ tasks {
             into("xml/ns")
             include("**/*.xsd")
         }
-        from("${buildDir}/schemas/xml/ns/external") {
+        from(project.layout.buildDirectory.dir("schemas/xml/ns/external")) {
             into("xml/ns")
             include("**/*.xsd")
         }
@@ -226,9 +239,4 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.36")
 
     runtimeOnly("org.glassfish.jaxb:jaxb-runtime:4.0.5")
-
-    testImplementation(platform("org.junit:junit-bom:5.11.2"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("com.google.inject:guice:7.0.0")
-    testImplementation("org.mockito:mockito-core:5.14.1")
 }
