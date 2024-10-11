@@ -31,3 +31,4 @@ jobs:
           api-secret: ${{ secrets.APISECRET }}
           sonatype-user: ${{ secrets.SONATYPEUSER }}
           sonatype-password: ${{ secrets.SONATYPEPASSWORD }}
+          publish-tasks: build publishIntershopMvnPublicationToMavenRepository
