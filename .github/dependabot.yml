@@ -12,8 +12,6 @@ updates:
     labels:
       - "dependencies"
       - "dependabot"
-    reviewers:
-      - "intershop/intershop-core"
     ignore:
       # Security updates are not affected by this ignore filter and still will be updated
       - dependency-name: "*"
