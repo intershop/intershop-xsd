@@ -84,7 +84,7 @@ testing {
         useJUnitJupiter()
         dependencies {
             implementation("com.google.inject:guice:7.0.0")
-            implementation("org.mockito:mockito-core:5.16.0")
+            implementation("org.mockito:mockito-core:5.16.1")
             // Make sure JAR with packaged XSDs is available during tests
             implementation(project.files(tasks.named("jar").get().outputs.files))
         }
