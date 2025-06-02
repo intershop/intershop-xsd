@@ -175,6 +175,10 @@ jaxb {
             schema = file("schemas/xml/ns/enfinity/6.4/core/processchain.xsd")
             binding = file("bindings/processchain/processchain_enfinity_6.4.xjb")
         }
+        register("xcs_catalog_enfinity_7_1") {
+            schema = file("schemas/xml/ns/enfinity/7.1/xcs/impex/catalog.xsd")
+            binding = file("bindings/impex/xcs_catalog_enfinity_7.1.xjb")
+        }
     }
 }
 
