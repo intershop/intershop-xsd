@@ -32,7 +32,7 @@ plugins {
     signing
 
     // intershop plugins
-    id("com.intershop.gradle.jaxb") version "7.0.1"
+    id("com.intershop.gradle.jaxb") version "7.0.2"
 }
 
 group = "com.intershop.xsd"
