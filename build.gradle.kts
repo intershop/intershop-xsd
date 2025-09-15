@@ -232,7 +232,7 @@ signing {
 }
 
 dependencies {
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.4")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
 
     implementation("org.slf4j:log4j-over-slf4j:1.7.36")
