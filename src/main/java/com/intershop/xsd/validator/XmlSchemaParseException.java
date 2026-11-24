@@ -13,6 +13,8 @@ import org.xml.sax.XMLReader;
 public class XmlSchemaParseException extends RuntimeException
 {
     /**
+     * Creates the exception with the given message and the exception thrown by the {@link XMLReader}.
+     *
      * @param msg Exception message
      * @param cause Exception cause
      *

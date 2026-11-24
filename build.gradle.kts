@@ -15,6 +15,8 @@
  *
  */
 
+import io.gitee.pkmer.enums.PublishingType
+
 plugins {
     // project plugins
     java
@@ -32,22 +34,27 @@ plugins {
     signing
 
     // intershop plugins
-    id("com.intershop.gradle.jaxb") version "7.0.1"
+    id("com.intershop.gradle.jaxb") version "9.0.0"
+
+    // publishing to Maven Central via the Central Portal
+    id("io.gitee.pkmer.pkmerboot-central-publisher") version "1.1.1"
 }
 
 group = "com.intershop.xsd"
 description = "Intershop XSD"
 // apply gradle property 'projectVersion' to project.version, default to 'LOCAL'
-val projectVersion : String? by project
-version = projectVersion ?: "LOCAL"
+version = project.findProperty("projectVersion") as String? ?: "LOCAL"
 
 // set correct project status
 if (project.version.toString().endsWith("-SNAPSHOT")) {
     status = "snapshot"
 }
 
-val sonatypeUsername: String? by project
-val sonatypePassword: String? by project
+val sonatypeUsername = project.findProperty("sonatypeUsername") as String?
+val sonatypePassword = project.findProperty("sonatypePassword") as String?
+
+// Java version for compiling, Javadoc and tests
+val javaLanguageVersion: JavaLanguageVersion = JavaLanguageVersion.of(25)
 
 repositories {
     mavenLocal()
@@ -59,7 +66,7 @@ java {
     withSourcesJar()
 
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = javaLanguageVersion
     }
 }
 
@@ -79,20 +86,40 @@ sourceSets {
     }
 }
 
+val mockitoVersion = "5.24.0"
+
+// Mockito is attached as Java agent, because attaching itself dynamically will no longer work in future JDKs
+// see https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+val mockitoAgent: Configuration = configurations.create("mockitoAgent")
+
+/**
+ * Provides the JVM argument that attaches the Mockito agent jar; the jar is declared as input of the test task.
+ */
+abstract class MockitoAgentProvider : CommandLineArgumentProvider {
+    @get:InputFiles
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val agentJar: ConfigurableFileCollection
+
+    override fun asArguments(): Iterable<String> = listOf("-javaagent:${agentJar.asPath}")
+}
+
 testing {
     suites.withType<JvmTestSuite> {
         useJUnitJupiter()
         dependencies {
             implementation("com.google.inject:guice:7.0.0")
-            implementation("org.mockito:mockito-core:5.18.0")
+            implementation("org.mockito:mockito-core:${mockitoVersion}")
             // Make sure JAR with packaged XSDs is available during tests
-            implementation(project.files(tasks.named("jar").get().outputs.files))
+            implementation(files(tasks.named("jar").get().outputs.files))
         }
 
         targets {
             all {
                 testTask.configure {
                     dependsOn("jar")
+                    jvmArgumentProviders.add(objects.newInstance<MockitoAgentProvider>().apply {
+                        agentJar.from(mockitoAgent)
+                    })
                 }
             }
         }
@@ -117,6 +144,8 @@ tasks {
     }
 
     register<Copy>("downloadExternalXSD") {
+        description = "Downloads the external XSDs that are packaged into the JAR."
+
         // Map of external XSD resources to download for packaging them into the JAR,
         // whereas the key is the URL and the value the filename to use for storing it
         val externalXSDResourceDownloadMap = mapOf(
@@ -124,16 +153,13 @@ tasks {
             Pair("https://www.w3.org/2007/08/xml.xsd", "www.w3.org/2001/xml.xsd")
         )
 
-        externalXSDResourceDownloadMap.forEach { pair ->
-            val url = pair.key
-            val filename = pair.value
+        // the download is part of the task execution, so it runs after 'clean' and its result is tracked
+        into(layout.buildDirectory.dir("schemas/xml/ns/external"))
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-            copy {
-                from(resources.text.fromUri(url))
-                into(project.layout.buildDirectory.file("schemas/xml/ns/external"))
+        externalXSDResourceDownloadMap.forEach { (url, filename) ->
+            from(resources.text.fromUri(url)) {
                 rename { filename }
-
-                duplicatesStrategy = DuplicatesStrategy.EXCLUDE
             }
         }
     }
@@ -165,6 +191,12 @@ tasks {
     }
 }
 
+dependencies {
+    mockitoAgent("org.mockito:mockito-core:${mockitoVersion}") {
+        isTransitive = false
+    }
+}
+
 jaxb {
     javaGen {
         register("processchain_v1") {
@@ -177,6 +209,8 @@ jaxb {
         }
     }
 }
+
+val stagingRepoDir = project.layout.buildDirectory.dir("stagingRepo")
 
 publishing {
     publications {
@@ -216,14 +250,21 @@ publishing {
 
     repositories {
         maven {
-            val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
-            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
-            credentials {
-                username = sonatypeUsername
-                password = sonatypePassword
-            }
+            name = "LOCAL"
+            url = stagingRepoDir.get().asFile.toURI()
         }
+    }
+}
+
+pkmerBoot {
+    sonatypeMavenCentral {
+        // the same as publishing.repositories.maven.url
+        stagingRepository = stagingRepoDir
+        // user token of the Central Portal, see https://central.sonatype.com/account
+        username = sonatypeUsername
+        password = sonatypePassword
+        // the deployment has to be published manually in the Central Portal
+        publishingType = PublishingType.USER_MANAGED
     }
 }
 

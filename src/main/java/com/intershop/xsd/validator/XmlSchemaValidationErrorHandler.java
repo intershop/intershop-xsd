@@ -14,6 +14,8 @@ public class XmlSchemaValidationErrorHandler implements ErrorHandler
     private final List<SAXParseException> exceptions;
 
     /**
+     * Creates an error handler without collected errors.
+     *
      * @see XmlSchemaValidationErrorHandler
      */
     public XmlSchemaValidationErrorHandler()
@@ -22,6 +24,9 @@ public class XmlSchemaValidationErrorHandler implements ErrorHandler
     }
 
     /**
+     * Returns the errors collected since the creation or the last call of {@link #clearErrors()}. Warnings, errors
+     * and fatal errors are collected alike.
+     *
      * @return List of {@link SAXParseException}s during validation
      */
     public List<SAXParseException> getErrors()

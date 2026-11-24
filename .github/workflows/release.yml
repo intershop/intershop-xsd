@@ -18,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: IntershopCommunicationsAG/.github/actions/gradle-plugin-setup@v2
+        uses: IntershopCommunicationsAG/.github/actions/gradle-plugin-setup@v5
         with:
           checkout-submodules: true
+          java-version: 25
       - name: Release
-        uses: IntershopCommunicationsAG/.github/actions/gradle-plugin-release@v2
+        uses: IntershopCommunicationsAG/.github/actions/gradle-plugin-release@v5
         with:
           signing-file: ${{ secrets.SIGNINGFILE }}
           signing-key-id: ${{ secrets.SIGNINGKEYID }}
@@ -31,4 +32,4 @@ jobs:
           api-secret: ${{ secrets.APISECRET }}
           sonatype-user: ${{ secrets.SONATYPEUSER }}
           sonatype-password: ${{ secrets.SONATYPEPASSWORD }}
-          publish-tasks: build publishIntershopMvnPublicationToMavenRepository
+          publish-tasks: build publishToMavenCentralPortal

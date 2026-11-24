@@ -27,6 +27,10 @@ public class ProcessChainXmlSchemaValidator implements XmlSchemaValidator
     private final XmlSchemaValidator xmlSchemaValidator;
 
     /**
+     * Creates a process chain validator that delegates to the given XML schema validator and configures it with the
+     * process chain schema definitions (semantic process chain {@code 1.1.0} and {@code 1.0.0}, Enfinity {@code 6.4}
+     * process chain) in this order.
+     *
      * @param xmlSchemaValidator XML schema validator
      * @throws XmlSchemaFilesMissingException If none of the XML schema files are existing
      *
