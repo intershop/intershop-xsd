@@ -6,6 +6,8 @@ package com.intershop.xsd.validator;
 public class XmlSchemaFilesMissingException extends Exception
 {
     /**
+     * Creates the exception with the given message.
+     *
      * @param msg Exception message
      *
      * @see XmlSchemaFilesMissingException

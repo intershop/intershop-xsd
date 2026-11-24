@@ -21,6 +21,15 @@ public class XmlSchemaClasspathResourceResolver implements LSResourceResolver
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * Creates a resource resolver that resolves referenced schemas from classpath resources below
+     * {@code /xml/ns/}, so no access to external resources is needed.
+     */
+    public XmlSchemaClasspathResourceResolver()
+    {
+        // nothing to initialize
+    }
+
     @Override
     public LSInput resolveResource(String type, String namespaceURI, String publicId, String systemId, String baseURI)
     {

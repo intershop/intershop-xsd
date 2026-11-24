@@ -60,6 +60,10 @@ public class XmlSchemaValidatorImpl implements XmlSchemaValidator
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
+     * Creates a validator that reports validation errors via the given error handler and resolves referenced schemas
+     * from the classpath via the given resolver. The schema definitions have to be set by
+     * {@link #setSchemaResourcePaths(List)} before validating.
+     *
      * @param xmlSchemaValidationErrorHandler XML schema validator error handler
      * @param xmlSchemaClasspathResourceResolver XML schema classpath resource resolver
      *

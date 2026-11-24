@@ -24,12 +24,17 @@ public interface XmlSchemaValidator
     void setSchemaResourcePaths(List<String> schemaDefinitionResourcePaths) throws XmlSchemaFilesMissingException;
 
     /**
+     * Validates the given XML file against the schema definitions set by {@link #setSchemaResourcePaths(List)}.
+     * The errors of the validation are available via {@link #getParseErrors()} afterwards.
+     *
      * @param xmlFile XML file
      * @return Whether the given XML file is valid according to the schema definition files or not.
      */
     boolean isValid(File xmlFile);
 
     /**
+     * Returns the SAX parse errors of the last validation by {@link #isValid(File)}.
+     *
      * @return The SAX parse errors from validating the XML file.
      */
     List<SAXParseException> getParseErrors();

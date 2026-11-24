@@ -7,6 +7,8 @@
 
 This project provides XML Schema Definitions (XSDs) of Intershop packaged as JAR. It will also fetch and provide external referenced XSDs to avoid the necessity to have internet access during various processing steps.
 
+The JAR also contains Java classes to validate XML files against the XSDs; they require Java 25 or later.
+
 
 # Setup
 To clone this project with its Git submodule _schemas_, you want to clone this repository recursively with `--recursive`:
@@ -44,6 +46,9 @@ go to the Git submodule _schemas_ directory and update the submodule to the remo
 # Release
 Create a new release in this project with the corresponding new version according to semantic versioning.
 The referenced commit from the Git submodule _schemas_ will be checked out during release creation.
+
+The release build uploads the artifacts to the [Central Portal](https://central.sonatype.com/publishing/deployments) of Maven Central, but does not publish them.
+Check the deployment there and publish it manually.
 
 
 # License
