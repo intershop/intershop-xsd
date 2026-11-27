@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enfinity xsi:schemaLocation="http://www.intershop.com/xml/ns/enfinity/7.1/xcs/impex catalog.xsd http://www.intershop.com/xml/ns/enfinity/6.5/core/impex-dt dt.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.intershop.com/xml/ns/enfinity/7.1/xcs/impex" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:dt="http://www.intershop.com/xml/ns/enfinity/6.5/core/impex-dt" major="6" minor="1" family="enfinity" branch="enterprise" build="build">
+<offer sku="6855851">
+<sku>6855851</sku>
+<long-description xml:lang="de-DE">Der Playon!HD Essential ermöglicht Ihnen das Speichern und den Genuss all Ihrer wertvollen Filme, Musik und Fotos ganz bequem in Ihrem eigenen Wohnzimmer. Befreien Sie Ihre Medieninhalte von den Beschrдnkungen auf Ihrem PC und erwecken Sie sie zu neuem Leben mit dem Essential, in Full HD Qualitдt auf Ihrem Fernseher. Der Playon!HD Essential ist auch der erste seiner Klasse, der die meiste Formatunterstьtzung und ein optionales Netzwerk Upgrade bietet, der Essential Wireless-N-Dongle (separat erhдltlich).&lt;br/&gt;&lt;br/&gt;Der PlayON!HD Essential wurde designed fьr Benutzer die einen einfach zu bedienenden Media Spieler bevorzugen ohne sich mit Problemen ьber Netzwerke auseinandern setzen zu mьssen. Ein neuer Performance Standard in der Klasse der Media Spieler ohne Netzwerk. Dieser gьnstige, benutzerfreundliche, standalone Media Player unterstьtzt fast alle Dateiformate inklusive Bluray und DVD ISO. Mit auЯergewцhnlicher Qualitдt und Einfachheit spielt der PlayON!HD Essential Eure Media Dateien von externen Laufwerken (USB Speicher, USB Festplatten und Media Karten) ab. Die vorinstallierten umweltfreundlichen, gerдuscharmen, energiesparenden Festplatten bis zu 2TB, erlauben Euch bequem alle Mediainhalte auf einer zentralen Station zu speichern.&lt;br/&gt;&lt;br/&gt;- Der PlayON!HD Essential macht Unterhaltung einfach und genussvoll fьr Dich, Deine Familie und Freunde. Einfaches Kopieren, Speichern und Abspielen Eurer Mediainhalte mit dem Essential. GenieЯt High Definition Entertainment wie es sein soll.&lt;br/&gt;- Mehr Format Unterstьtzung als jeder andere Media Spieler ohne Netzwerk.&lt;br/&gt;- Ьberragende Video Qualitдt in High Definition 1080p.&lt;br/&gt;- Spielt BD-ISO Dateien inklusive BD basic Navigation.&lt;br/&gt;- Spielt DVD IFO/ISO mit vollem DVD Menь und Navigationsunterstьtzung.&lt;br/&gt;- Unterstьtzt mehr Charakter Sets (fьr nicht-englische Untertitel).&lt;br/&gt;- Komplett einzigartiges, neu-designte Benutzeroberflдche (Playon!GUI2.0).&lt;br/&gt;- Smart Content Management (Automatische Dateiindizierung).</long-description>
+<long-description xml:lang="en-US">The Playon!HD Essential allows you to store and enjoy all of your precious movies, music and photos in the comfort of your own living room. Free your media content from the limitations of your PC and let the Essential bring them to life in Full HD quality on your TV. The Playon!HD Essential is also the first in its class to offer an optional upgrade to network with the Essential Wireless N dongle, sold separately.&lt;br/&gt;&lt;br/&gt;The Playon!HD Essential is designed for users who prefer an easy to use media player without the fuss of networking. Setting a new standard of performance in the class of media players with no network, this inexpensive, user friendly, no-network media player supports the most file formats including Blu-ray and DVD ISO. With exceptional quality and ease, the Playon!HD Essential, plays your media files from external drives (USB drives, USB hard disks, and media cards such as SD Cards). The pre-installed eco friendly, low noise, low power consumption HDD up to 2TB allows you to conveniently store all your media files in one central location.&lt;br/&gt;&lt;br/&gt;- The Playon!HD Essential makes entertainment simple and enjoyable for you, your family and friends. Simply transfer, store and play your media content with the Essential and enjoy High Definition entertainment, the way it should be.&lt;br/&gt;- More format support than any other no network media player.&lt;br/&gt;- Superior video quality High Definition 1080p.&lt;br/&gt;- Plays BD-ISO files including BD basic navigation.&lt;br/&gt;- Plays DVD IFO/ISO with full DVD menu and navigation support.&lt;br/&gt;- Supports more character sets (for non-English subtitles).&lt;br/&gt;- Completely unique, newly designed user interface (Playon!GUI2.0).&lt;br/&gt;- Smart content management (auto file indexing).</long-description>
+<name xml:lang="de-DE">AC Ryan Playon!HD Essential 500GB</name>
+<name xml:lang="en-US">AC Ryan Playon!HD Essential 500GB</name>
+<short-description xml:lang="de-DE">Playon!HD Essential 500GB, Full HD Media Player, 500GB HDD, 610g, Schwarz</short-description>
+<short-description xml:lang="en-US">Playon!HD Essential 500GB, Full HD Media Player, 500GB HDD, 610g, Black</short-description>
+<category-links>
+<category-link name="1373" domain="inSPIRED-Home-Entertainment" default = "1" hotdeal = "0"/>
+</category-links>
+<images>
+<image-ref image-view="side" image-type="L" image-base-name="L/6855851_5965.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="side" image-type="S" image-base-name="S/6855851_5965.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="side" image-type="M" image-base-name="M/6855851_5965.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="front" image-type="L" image-base-name="L/6855851-8256.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="front" image-type="S" image-base-name="S/6855851-8256.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="front" image-type="M" image-base-name="M/6855851-8256.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="back" image-type="L" image-base-name="L/6855851_1138.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="back" image-type="S" image-base-name="S/6855851_1138.jpg" domain="inSPIRED-MasterRepository" />
+<image-ref image-view="back" image-type="M" image-base-name="M/6855851_1138.jpg" domain="inSPIRED-MasterRepository" />
+</images>
+<product-list-prices>
+<product-list-price currency="EUR" net-price="1">97.9</product-list-price>
+<product-list-price currency="USD" net-price="1">131</product-list-price>
+</product-list-prices>
+<offered-product sku="6855851" domain="inSPIRED-MasterRepository"/>
+<tax-class id = "FullTax"/>
+<product-type name = "Basic" domain = "system"/>
+<template>product/GeneralProductInformationInclude</template>
+<online>1</online>
+<available>1</available>
+<availability-status>1</availability-status>
+<supplier>
+<supplier-name>IQ</supplier-name>
+<supplier-sku>6855851</supplier-sku>
+</supplier>
+<manufacturer>
+<manufacturer-name>AC Ryan</manufacturer-name>
+<manufacturer-sku>ACR-PV73500-500GB</manufacturer-sku>
+</manufacturer>
+<custom-attributes>
+<custom-attribute name="AC adapter included" dt:dt="string" xml:lang="de-DE">Ja</custom-attribute>
+<custom-attribute name="AC adapter included" dt:dt="string" xml:lang="en-US">Y</custom-attribute>
+<custom-attribute name="Audio (L,R) out" dt:dt="string" xml:lang="de-DE">1</custom-attribute>
+<custom-attribute name="Audio (L,R) out" dt:dt="string" xml:lang="en-US">1</custom-attribute>
+<custom-attribute name="Audio decoders" dt:dt="string" xml:lang="de-DE">Dolby Digital, Dolby Digital Plus, Dolby TrueHD, DTS</custom-attribute>
+<custom-attribute name="Audio decoders" dt:dt="string" xml:lang="en-US">Dolby Digital,Dolby Digital Plus,Dolby TrueHD,DTS</custom-attribute>
+<custom-attribute name="Audio formats supported" dt:dt="string" xml:lang="de-DE">AAC, FLAC, MP2, MP3, OGG, WAV, WMA</custom-attribute>
+<custom-attribute name="Audio formats supported" dt:dt="string" xml:lang="en-US">AAC,FLAC,MP2,MP3,OGG,WAV,WMA</custom-attribute>
+<custom-attribute name="AvailabilityStatus" dt:dt="int">1</custom-attribute>
+<custom-attribute name="Cables included" dt:dt="string" xml:lang="de-DE">AV</custom-attribute>
+<custom-attribute name="Cables included" dt:dt="string" xml:lang="en-US">AV</custom-attribute>
+<custom-attribute name="Colour_of_product" dt:dt="string" xml:lang="de-DE">Schwarz</custom-attribute>
+<custom-attribute name="Colour_of_product" dt:dt="string" xml:lang="en-US">Black</custom-attribute>
+<custom-attribute name="Compatible memory cards" dt:dt="string" xml:lang="de-DE">Speicherstift (MS), MS PRO, MMC, SD, SDHC</custom-attribute>
+<custom-attribute name="Compatible memory cards" dt:dt="string" xml:lang="en-US">Memory Stick (MS),MS PRO,MMC,SD,SDHC</custom-attribute>
+<custom-attribute name="Component video (YPbPr/YCbCr) out" dt:dt="string" xml:lang="de-DE">1</custom-attribute>
+<custom-attribute name="Component video (YPbPr/YCbCr) out" dt:dt="string" xml:lang="en-US">1</custom-attribute>
+<custom-attribute name="Connectivity technology" dt:dt="string" xml:lang="de-DE">verkabelt</custom-attribute>
+<custom-attribute name="Connectivity technology" dt:dt="string" xml:lang="en-US">Wired</custom-attribute>
+<custom-attribute name="DC-in jack" dt:dt="string" xml:lang="de-DE">Ja</custom-attribute>
+<custom-attribute name="DC-in jack" dt:dt="string" xml:lang="en-US">Y</custom-attribute>
+<custom-attribute name="Depth" dt:dt="quantity" xml:lang="de-DE">150 mm</custom-attribute>
+<custom-attribute name="Depth" dt:dt="quantity" xml:lang="en-US">150 mm</custom-attribute>
+<custom-attribute name="Fan" dt:dt="string" xml:lang="de-DE">40mm</custom-attribute>
+<custom-attribute name="Fan" dt:dt="string" xml:lang="en-US">40mm</custom-attribute>
+<custom-attribute name="Full HD" dt:dt="string" xml:lang="de-DE">Y</custom-attribute>
+<custom-attribute name="Full HD" dt:dt="string" xml:lang="en-US">Y</custom-attribute>
+<custom-attribute name="GiftWrappable" dt:dt="boolean">true</custom-attribute>
+<custom-attribute name="HDMI ports quantity" dt:dt="string" xml:lang="de-DE">2</custom-attribute>
+<custom-attribute name="HDMI ports quantity" dt:dt="string" xml:lang="en-US">2</custom-attribute>
+<custom-attribute name="Handheld remote control" dt:dt="string" xml:lang="de-DE">Ja</custom-attribute>
+<custom-attribute name="Handheld remote control" dt:dt="string" xml:lang="en-US">Y</custom-attribute>
+<custom-attribute name="Hard disk interface" dt:dt="string" xml:lang="de-DE">Serial ATA, Serial ATA II</custom-attribute>
+<custom-attribute name="Hard disk interface" dt:dt="string" xml:lang="en-US">Serial ATA,Serial ATA II</custom-attribute>
+<custom-attribute name="Hard disk size" dt:dt="string" xml:lang="de-DE">8.89 cm (3.5 &quot;)</custom-attribute>
+<custom-attribute name="Hard disk size" dt:dt="string" xml:lang="en-US">88.9 mm (3.5 &quot;)</custom-attribute>
+<custom-attribute name="Hard_disk_drive_capacity" dt:dt="string" xml:lang="de-DE">500 GB</custom-attribute>
+<custom-attribute name="Hard_disk_drive_capacity" dt:dt="string" xml:lang="en-US">500 GB</custom-attribute>
+<custom-attribute name="Height" dt:dt="quantity" xml:lang="de-DE">55 mm</custom-attribute>
+<custom-attribute name="Height" dt:dt="quantity" xml:lang="en-US">55 mm</custom-attribute>
+<custom-attribute name="Image formats supported" dt:dt="string" xml:lang="de-DE">JPG, PNG, GIF, TIF, BMP</custom-attribute>
+<custom-attribute name="Image formats supported" dt:dt="string" xml:lang="en-US">JPG,PNG,GIF,TIF,BMP</custom-attribute>
+<custom-attribute name="Maximum storage capacity" dt:dt="string" xml:lang="de-DE">2.0 TB</custom-attribute>
+<custom-attribute name="Maximum storage capacity" dt:dt="string" xml:lang="en-US">2.0 TB</custom-attribute>
+<custom-attribute name="Maximum video resolution" dt:dt="string" xml:lang="de-DE">1920 x 1080 Pixel</custom-attribute>
+<custom-attribute name="Maximum video resolution" dt:dt="string" xml:lang="en-US">1920 x 1080 pixels</custom-attribute>
+<custom-attribute name="Number of hard drives installed" dt:dt="string" xml:lang="de-DE">1</custom-attribute>
+<custom-attribute name="Number of hard drives installed" dt:dt="string" xml:lang="en-US">1</custom-attribute>
+<custom-attribute name="Quick start guide" dt:dt="string" xml:lang="de-DE">Ja</custom-attribute>
+<custom-attribute name="Quick start guide" dt:dt="string" xml:lang="en-US">Y</custom-attribute>
+<custom-attribute name="Source data-sheet" dt:dt="string" xml:lang="de-DE">Icecat.biz</custom-attribute>
+<custom-attribute name="Source data-sheet" dt:dt="string" xml:lang="en-US">Icecat.biz</custom-attribute>
+<custom-attribute name="Subtitle formats supported" dt:dt="string" xml:lang="de-DE">MicroDVD [.sub], SubRip [.srt], Sub Station Alpha [.ssa], Sami [.smi], Idx+Sub</custom-attribute>
+<custom-attribute name="Subtitle formats supported" dt:dt="string" xml:lang="en-US">MicroDVD [.sub],SubRip [.srt],Sub Station Alpha [.ssa],Sami [.smi],Idx+Sub</custom-attribute>
+<custom-attribute name="Supported file systems" dt:dt="string" xml:lang="de-DE">FAT32, NTFS, HFS+, ext3</custom-attribute>
+<custom-attribute name="Supported file systems" dt:dt="string" xml:lang="en-US">FAT32,NTFS,HFS+,ext3</custom-attribute>
+<custom-attribute name="USB 2.0 ports quantity" dt:dt="string" xml:lang="de-DE">3</custom-attribute>
+<custom-attribute name="USB 2.0 ports quantity" dt:dt="string" xml:lang="en-US">3</custom-attribute>
+<custom-attribute name="Video compression formats" dt:dt="string" xml:lang="de-DE">AVI / MKV / TS / TP / TRP / M2TS / MPG / MP4 / MOV / M4V / VOB / ISO / IFO / DAT / WMV / ASF / RM / RMVB / FLV resolution up to 720p / 1080i / 1080p / BD-ISO</custom-attribute>
+<custom-attribute name="Video compression formats" dt:dt="string" xml:lang="en-US">AVI / MKV / TS / TP / TRP / M2TS / MPG / MP4 / MOV / M4V / VOB / ISO / IFO / DAT / WMV / ASF / RM / RMVB / FLV resolution up to 720p / 1080i / 1080p / BD-ISO</custom-attribute>
+<custom-attribute name="Weight" dt:dt="quantity" xml:lang="de-DE">610 g</custom-attribute>
+<custom-attribute name="Weight" dt:dt="quantity" xml:lang="en-US">610 g</custom-attribute>
+<custom-attribute name="Width" dt:dt="quantity" xml:lang="de-DE">185 mm</custom-attribute>
+<custom-attribute name="Width" dt:dt="quantity" xml:lang="en-US">185 mm</custom-attribute>
+</custom-attributes>
+</offer>
+</enfinity>
