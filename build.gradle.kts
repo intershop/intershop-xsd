@@ -268,6 +268,12 @@ pkmerBoot {
     }
 }
 
+// bundleForUpload of pkmerboot-central-publisher 1.1.1 declares the whole build directory as an input, so Gradle
+// rejects the release build ("build publishToMavenCentralPortal") unless all tasks of "build" are ordered before it
+tasks.named("bundleForUpload") {
+    mustRunAfter(tasks.named("build"))
+}
+
 signing {
     sign(publishing.publications["intershopMvn"])
 }
